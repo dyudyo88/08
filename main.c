@@ -1,74 +1,58 @@
 #include <stdio.h>
 
+void print_image(int image[][5])
+{
+	int i,j;
+	int*ptr=&image[0][0];
 
-int addfunc(int a,int b);
-int subfunc(int a, int b);
-int mulfunc(int a, int b);
-int divfunc(int a, int b);
+	for(i=0;i<5;i++)
+	{
+		for(j=0;j<5;j++)
+		{
+			printf("%d",*ptr);
+			ptr = ptr + 1;  
+		}
+		printf("\n");
+	}
+	
+}
+
+
+
+
+
+void brighten_image(int image[][5])
+{
+	int i,j;
+	int*ptr=&image[0][0];
+
+	for(i=0;i<5;i++)
+	{
+		for(j=0;j<5;j++)
+		{
+			*ptr=*ptr+10;
+			ptr=ptr+1;
+		}
+		printf("\n");	
+	}
+	
+	
+}
+
 
 
 int main(void)
 {
+	int image[5][5]={
+		{10,20,30,40,50},
+		{10,20,30,40,50},
+		{10,20,30,40,50},
+		{10,20,30,40,50},
+		{10,20,30,40,50}
+	};
 	
-	int num1;
-	int num2;
-	char op;
-	
-	int (*calcfunc)(int, int); //int를 반환하는 함수포인터  
-	
-	
-	printf("input calculation : ");
-	scanf("%d %c %d",&num1, &op, &num2);
-	
-	
-	switch(op)
-	{
-		case '+' : 
-			calcfunc = addfunc;
-			break;
-		case '-' : 
-			calcfunc = subfunc;
-			break;
-		case '*' : 
-			calcfunc = mulfunc;
-			break;
-		case '/' : 
-			calcfunc = divfunc;
-			break;	
-	}
-	
-	
-	printf("result = %i\n",calcfunc(num1, num2));
-	
+	print_image(image);
+	brighten_image(image);
+	print_image(image);
 	return 0;
-
 }
-
-
-
-
-
-int addfunc(int a, int b)
-{
-	return a+b;
-}
-
-
-int subfunc(int a, int b)
-{
-	return a-b;
-}
-
-int mulfunc(int a, int b)
-{
-	return a*b;
-}
-
-int divfunc(int a, int b)
-{
-	return a/b;
-}
-
-
-
-
