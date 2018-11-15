@@ -5,22 +5,15 @@
 
 int main(int argc, char *argv[]) {
 	
+	int i=100;
+	int *p=&i;
+	int **q=&p;
 	
-	char *pc;
-	int *pi;
-	double *pd;
+	*p=200;
+	printf("i=%d,*p=%d, **q=%d\n", i,*p,**q);
 	
-	pc=(char*)10000;
-	pi=(int*)10000;
-	pd=(double*)10000;
-	
-	printf("before : pc=%d, pi=%d, pd=%d\n",pc, pi,pd);
-	
-	pc++;
-	pi++;
-	pd++;
-	printf("after : pc=%d, pi=%d, pd=%d\n",pc, pi,pd);
-	
+	**q=300;
+	printf("i = %d, *p=%d, **q=%d\n",i,*p,**q);
 	
 	return 0;
 }
